@@ -12,7 +12,8 @@ Version:	0.9.6
 Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
-Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
+#Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
+Source0:	%{_name}-4-%{version}.tar.gz
 # Source0-md5:	e610bcb9a0a7c5535bda2ac0d52d4fa6
 URL:		http://www.all-day-breakfast.com/rosegarden/
 %{?with_sound:BuildRequires:	alsa-lib-devel}
