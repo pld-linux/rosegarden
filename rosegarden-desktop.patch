@@ -1,6 +1,5 @@
-diff -aurN rosegarden-4-0.9.7.orig/gui/rosegarden.desktop rosegarden-4-0.9.7/gui/rosegarden.desktop
---- rosegarden-4-0.9.7.orig/gui/rosegarden.desktop	2004-02-25 23:04:27.000000000 +0100
-+++ rosegarden-4-0.9.7/gui/rosegarden.desktop	2004-03-25 17:57:07.731996464 +0100
+--- rosegarden-4-1.0/gui/rosegarden.desktop	2004-05-22 10:06:53.000000000 +0200
++++ rosegarden-4-1.0-o/gui/rosegarden.desktop	2005-02-19 21:32:27.665448240 +0100
 @@ -1,15 +1,15 @@
 -# KDE Config File  
 -[KDE Desktop Entry]
@@ -13,8 +12,8 @@ diff -aurN rosegarden-4-0.9.7.orig/gui/rosegarden.desktop rosegarden-4-0.9.7/gui
  Exec=rosegarden -caption "%c" %i %m
 -MimeType=audio/x-rosegarden;audio/x-rosegarden-device
 -X-KDE-NativeMimeType=audio/x-rosegarden
- Icon=rosegarden.xpm
- MiniIcon=rosegarden.xpm
+ Icon=rosegarden.png
+ MiniIcon=rosegarden.png
 +Terminal=false
 +Type=Application
 +Categories=Qt;KDE;AudioVideo;
@@ -28,3 +27,4 @@ diff -aurN rosegarden-4-0.9.7.orig/gui/rosegarden.desktop rosegarden-4-0.9.7/gui
 -Name=Rosegarden
 -Name[de]=Rosegarden
 +# vi: encoding=utf-8
+\ Brak znaku nowej linii na koñcu pliku
