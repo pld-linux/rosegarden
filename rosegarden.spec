@@ -20,16 +20,16 @@ BuildRequires:	jack-audio-connection-kit-devel
 BuildRequires:	ladspa-devel
 BuildRequires:	alsa-lib-devel
 %{?!_without_kdemultimedia:BuildRequires: kdemultimedia-devel >= 3.0}
-BuildRoot:	%{tmpdir}/%{_name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Rosegarden is an attractive, user-friendly audio and MIDI sequencer,
 score editor, and general-purpose music composition and editing
-application
+application.
 
 %description -l pl
 Rosegarden jest interaktywnym sewencerem MIDI i audio, edytorem zapisu
-nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki
+nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki.
 
 %prep
 %setup -q -n %{_name}-4-%{version}
@@ -37,7 +37,6 @@ nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki
 %patch1 -p1
 
 %build
-
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 %configure \
