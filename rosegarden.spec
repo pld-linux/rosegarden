@@ -39,7 +39,6 @@ nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki.
 %setup -q -n %{_name}-4-%{version}
 
 %build
-
 %configure \
 	--disable-rpath \
 	%{!?with_sound:--disable-sound} \
@@ -59,7 +58,7 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 mv $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/rosegarden.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/kde
 
-echo "Categories=Qt;KDE;AudioVideo" >> \
+echo "Categories=Qt;KDE;AudioVideo;" >> \
 	$RPM_BUILD_ROOT%{_desktopdir}/kde/rosegarden.desktop
 	
 %find_lang %{_name} --with-kde
