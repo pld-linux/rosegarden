@@ -1,0 +1,30 @@
+diff -aurN rosegarden-4-0.9.7.orig/gui/rosegarden.desktop rosegarden-4-0.9.7/gui/rosegarden.desktop
+--- rosegarden-4-0.9.7.orig/gui/rosegarden.desktop	2004-02-25 23:04:27.000000000 +0100
++++ rosegarden-4-0.9.7/gui/rosegarden.desktop	2004-03-25 17:57:07.731996464 +0100
+@@ -1,15 +1,15 @@
+-# KDE Config File  
+-[KDE Desktop Entry]
+-Type=Application
+-Categories=AudioVideo;Application;X-SuSE-Sequencer;X-Red-Hat-Base;
++[Desktop Entry]
++Name=Rosegarden
++Comment=MIDI and Audio Sequencer and Editor
++Comment[pl]=Sekwencer i edytor MIDI i dźwięku
+ Exec=rosegarden -caption "%c" %i %m
+-MimeType=audio/x-rosegarden;audio/x-rosegarden-device
+-X-KDE-NativeMimeType=audio/x-rosegarden
+ Icon=rosegarden.xpm
+ MiniIcon=rosegarden.xpm
++Terminal=false
++Type=Application
++Categories=Qt;KDE;AudioVideo;
++Encoding=UTF-8
++MimeType=audio/x-rosegarden;audio/x-rosegarden-device
++X-KDE-NativeMimeType=audio/x-rosegarden
+ DocPath=rosegarden/index.html
+-Comment=MIDI and Audio Sequencer and Editor
+-Comment[de]=
+-Terminal=0
+-Name=Rosegarden
+-Name[de]=Rosegarden
++# vi: encoding=utf-8
