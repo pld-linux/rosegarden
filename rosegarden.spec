@@ -13,6 +13,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
+# Source0-md5:	53046afaee44e33de01e2afbbd2380f6
 Patch0:		%{_name}-build_without_kdemultimedia.patch
 Patch1:		%{_name}-desktop.patch
 URL:		http://www.all-day-breakfast.com/rosegarden/
