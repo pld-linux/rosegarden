@@ -15,6 +15,7 @@ Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
 # Source0-md5:	f8b3c44da48b125be8a7459664bfa4cb
 Patch0:		%{_name}-desktop.patch
+Patch1:		%{name}-gcc33.patch
 URL:		http://www.all-day-breakfast.com/rosegarden/
 BuildRequires:	alsa-lib-devel
 %{!?_without_kdemultimedia:BuildRequires:	arts-kde-devel}
@@ -37,6 +38,7 @@ nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki.
 %prep
 %setup -q -n %{_name}-4-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
@@ -48,9 +50,9 @@ kde_htmldir="%{_htmldir}"; export kde_htmldir
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %find_lang %{_name} --with-kde
 
