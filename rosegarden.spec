@@ -1,12 +1,12 @@
+#
 # Conditional build:
-# _with_arts		- enable aRts support (at cost of ALSA support)
-# _without_kdemultimedia
-#			- without linking with arts
-
+# _with_arts			- enable aRts support (at cost of ALSA support)
+# _without_kdemultimedia	- without linking with arts
+#
 %define		_name		rosegarden
 %define         _htmldir        /usr/share/doc/kde/HTML
-Summary:	Rosegarden is an attractive audio and MIDI sequencer
-Summary(pl):	Rosegarden jest interaktywnym sekwencerem MIDI i audio
+Summary:	Rosegarden - an attractive audio and MIDI sequencer
+Summary(pl):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden4
 Version:	0.9
 Release:	1
@@ -16,11 +16,14 @@ Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
 Patch0:		%{_name}-build_without_kdemultimedia.patch
 Patch1:		%{_name}-desktop.patch
 URL:		http://www.all-day-breakfast.com/rosegarden/
+BuildRequires:	alsa-lib-devel
+%{!?_without_kdemultimedia:BuildRequires:	arts-kde-devel}
 BuildRequires:	jack-audio-connection-kit-devel
 BuildRequires:	ladspa-devel
-BuildRequires:	alsa-lib-devel
-%{?!_without_kdemultimedia:BuildRequires: kdemultimedia-devel >= 3.0}
+%{!?_without_kdemultimedia:BuildRequires: kdemultimedia-devel >= 3.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_htmldir	%{_docdir}/kde/HTML
 
 %description
 Rosegarden is an attractive, user-friendly audio and MIDI sequencer,
@@ -50,17 +53,22 @@ install -d $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{_name} --with-kde
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
+
+%files -f %{_name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/libRosegardenSequencer.la
-%attr(755,root,root) %{_libdir}/libRosegardenSequencer.so*
+%attr(755,root,root) %{_libdir}/libRosegardenSequencer.so.*.*
 %{_datadir}/apps/%{_name}
 %{_pixmapsdir}/*/*/apps/%{_name}.xpm
-%{_datadir}/locale/*/LC_MESSAGES/%{_name}.mo
 %{_desktopdir}/%{_name}.desktop
-%{_htmldir}/en/%{_name}
+# devel? but no headers
+%attr(755,root,root) %{_libdir}/libRosegardenSequencer.so
+%{_libdir}/libRosegardenSequencer.la
