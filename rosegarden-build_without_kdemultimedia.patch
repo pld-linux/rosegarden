@@ -1,0 +1,24 @@
+diff -aurN rosegarden-4-0.9.orig/sound/Makefile.am rosegarden-4-0.9/sound/Makefile.am
+--- rosegarden-4-0.9.orig/sound/Makefile.am	Tue Apr 29 14:33:07 2003
++++ rosegarden-4-0.9/sound/Makefile.am	Fri May  2 16:25:02 2003
+@@ -68,7 +68,7 @@
+ endif
+ 
+ libRosegardenSequencer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -module -no-undefined
+-libRosegardenSequencer_la_LIBADD   = -lartsmidi $(LIB_QT) -lsoundserver_idl libRosegardenSound.la ../base/libbase.la -lartsflow -lartsmodules -lartskde @ALSA_LIBS@
++libRosegardenSequencer_la_LIBADD   = $(LIB_QT) -lsoundserver_idl libRosegardenSound.la ../base/libbase.la @ALSA_LIBS@
+ 
+ libRosegardenSequencer_la_CFLAGS = @ALSA_CFLAGS@
+ 
+diff -aurN rosegarden-4-0.9.orig/sound/Makefile.in rosegarden-4-0.9/sound/Makefile.in
+--- rosegarden-4-0.9.orig/sound/Makefile.in	Tue Apr 29 14:37:47 2003
++++ rosegarden-4-0.9/sound/Makefile.in	Fri May  2 16:25:37 2003
+@@ -302,7 +302,7 @@
+ 
+ 
+ libRosegardenSequencer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -module -no-undefined
+-libRosegardenSequencer_la_LIBADD = -lartsmidi $(LIB_QT) -lsoundserver_idl libRosegardenSound.la ../base/libbase.la -lartsflow -lartsmodules -lartskde @ALSA_LIBS@
++libRosegardenSequencer_la_LIBADD = $(LIB_QT) -lsoundserver_idl libRosegardenSound.la ../base/libbase.la @ALSA_LIBS@
+ 
+ libRosegardenSequencer_la_CFLAGS = @ALSA_CFLAGS@
+ 
