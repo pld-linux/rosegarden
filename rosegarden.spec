@@ -20,7 +20,7 @@ BuildRequires:	alsa-lib-devel
 %{!?_without_kdemultimedia:BuildRequires:	arts-kde-devel}
 BuildRequires:	jack-audio-connection-kit-devel
 BuildRequires:	ladspa-devel
-%{!?_without_kdemultimedia:BuildRequires: kdemultimedia-devel >= 3.0}
+%{!?_without_kdemultimedia:BuildRequires:	kdemultimedia-devel >= 3.0}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	%{_docdir}/kde/HTML
