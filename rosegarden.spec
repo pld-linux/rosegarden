@@ -1,8 +1,8 @@
 #
 # Conditional build:
-%bcond_with arts		# enable aRts support (at cost of ALSA support)
-%bcond_without sound		# build without ANY sound support (only sequencer)
-
+%bcond_with	arts	# enable aRts support (at cost of ALSA support)
+%bcond_without	sound	# build without ANY sound support (only sequencer)
+#
 %define		_name		rosegarden
 
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
@@ -14,6 +14,7 @@ License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
 # Source0-md5:	91e9d8fcc5297938ad7efd0983c21f55
+Patch0:		%{name}-desktop.patch
 URL:		http://www.all-day-breakfast.com/rosegarden/
 %{?with_sound:BuildRequires:	alsa-lib-devel}
 %{!?with_arts:BuildRequires:	alsa-lib-devel}
@@ -36,6 +37,7 @@ nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki.
 
 %prep
 %setup -q -n %{_name}-4-%{version}
+%patch0 -p1
 
 %build
 %configure \
@@ -56,9 +58,6 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 
 mv $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/rosegarden.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/kde
-
-echo "Categories=Qt;KDE;AudioVideo;" >> \
-	$RPM_BUILD_ROOT%{_desktopdir}/kde/rosegarden.desktop
 	
 %find_lang %{_name} --with-kde
 
@@ -78,4 +77,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/rosegarden
 %{_desktopdir}/kde/rosegarden.desktop
 %{_iconsdir}/[!l]*/*/apps/*rosegarden.xpm
-%{_datadir}/mimelnk/audio/x-rosegarden*.desktop
+%{_datadir}/mimelnk/audio/x-*.desktop
