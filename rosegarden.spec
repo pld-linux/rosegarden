@@ -8,13 +8,12 @@
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden4
-Version:	0.9.6
+Version:	0.9.7
 Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
-#Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
-Source0:	%{_name}-4-%{version}.tar.gz
-# Source0-md5:	e610bcb9a0a7c5535bda2ac0d52d4fa6
+Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.gz
+# Source0-md5:	91e9d8fcc5297938ad7efd0983c21f55
 URL:		http://www.all-day-breakfast.com/rosegarden/
 %{?with_sound:BuildRequires:	alsa-lib-devel}
 %{!?with_arts:BuildRequires:	alsa-lib-devel}
