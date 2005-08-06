@@ -23,7 +23,6 @@ BuildRequires:	ladspa-devel
 BuildRequires:	liblrdf-devel
 BuildRequires:	kdelibs-devel >= 3.1
 BuildRequires:	rpmbuild(macros) >= 1.129
-Requires:	kdebase-core
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,7 +57,9 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 
 mv $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/rosegarden.desktop \
 	$RPM_BUILD_ROOT%{_desktopdir}/kde
-	
+
+rm -rf $RPM_BUILD_ROOT%{_iconsdir}/locolor
+
 %find_lang %{_name} --with-kde
 
 %clean
