@@ -1,0 +1,12 @@
+diff -aurN rosegarden-4-1.0.orig/gui/rosegardentransport.ui rosegarden-4-1.0/gui/rosegardentransport.ui
+--- rosegarden-4-1.0.orig/gui/rosegardentransport.ui	2004-07-24 01:07:23.000000000 +0200
++++ rosegarden-4-1.0/gui/rosegardentransport.ui	2006-01-06 13:29:03.000000000 +0100
+@@ -4308,8 +4308,4 @@
+     <tabstop>FfwdEndButton</tabstop>
+ </tabstops>
+ <layoutdefaults spacing="6" margin="11"/>
+-<includehints>
+-    <includehint>rosegardenlabel.h</includehint>
+-    <includehint>rosegardenlabel.h</includehint>
+-</includehints>
+ </UI>
