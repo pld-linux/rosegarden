@@ -15,9 +15,11 @@ Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.bz2
 # Source0-md5:	ca63f343e2a6240a0f64d32e362bf436
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-qt.patch
 URL:		http://www.rosegardenmusic.com/
 %{?with_sound:BuildRequires:	alsa-lib-devel}
 %{!?with_arts:BuildRequires:	alsa-lib-devel}
+BuildRequires:	dssi >= 0.4
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 BuildRequires:	ladspa-devel
 BuildRequires:	liblrdf-devel
@@ -37,6 +39,7 @@ nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki.
 %prep
 %setup -q -n %{_name}-4-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure \
