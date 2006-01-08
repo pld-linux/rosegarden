@@ -43,6 +43,7 @@ nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki.
 
 %build
 %configure \
+	--with-qt-libraries=%{_libdir} \
 	--disable-rpath \
 	%{!?with_sound:--disable-sound} \
 	%{?with_arts:--with-arts}
