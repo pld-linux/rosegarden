@@ -1,30 +1,27 @@
 #
-# Conditional build:
-%bcond_with	arts	# enable aRts support (at cost of ALSA support)
-%bcond_without	sound	# build without ANY sound support (only sequencer)
-#
 %define		_name		rosegarden
-
+#
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden4
-Version:	1.0
+Version:	1.2.3
 Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.bz2
-# Source0-md5:	ca63f343e2a6240a0f64d32e362bf436
+# Source0-md5:	e7fb7ebcb21ac6841ac5cfd6683f5fb2
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-qt.patch
+Patch1:		%{name}-install.patch
 URL:		http://www.rosegardenmusic.com/
-%{?with_sound:BuildRequires:	alsa-lib-devel}
-%{!?with_arts:BuildRequires:	alsa-lib-devel}
+BuildRequires:	alsa-lib-devel
 BuildRequires:	dssi >= 0.4
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
+BuildRequires:	kdelibs-devel >= 3.1
 BuildRequires:	ladspa-devel
 BuildRequires:	liblrdf-devel
-BuildRequires:	kdelibs-devel >= 3.1
+BuildRequires:	pkgconfig >= 0.15
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	scons
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,20 +39,16 @@ nutowego, a jego g³ównym zadaniem jest komponowanie i edycja muzyki.
 %patch1 -p1
 
 %build
-%configure \
-	--with-qt-libraries=%{_libdir} \
-	--disable-rpath \
-	%{!?with_sound:--disable-sound} \
-	%{?with_arts:--with-arts}
-
-%{__make}
-
+export CXXFLAGS="%{rpmcflags}"
+scons configure \
+	qtincludes=%{_includedir}/qt
+scons
+	
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
+scons install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
 
@@ -74,12 +67,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{_name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README TODO TRANSLATORS
+%doc AUTHORS README TRANSLATORS
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/libRosegardenSequencer.la
-%{_libdir}/libRosegardenSequencer.so
-%attr(755,root,root) %{_libdir}/libRosegardenSequencer.so.*.*.*
 %{_datadir}/apps/rosegarden
 %{_desktopdir}/kde/rosegarden.desktop
-%{_iconsdir}/[!l]*/*/apps/*rosegarden.png
+%{_iconsdir}/[!l]*/*/*/*.png
 %{_datadir}/mimelnk/audio/x-*.desktop
