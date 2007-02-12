@@ -2,7 +2,7 @@
 %define		_name		rosegarden
 #
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
-Summary(pl.UTF-8):   Rosegarden - interaktywny sekwencer MIDI i audio
+Summary(pl.UTF-8):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden4
 Version:	1.2.3
 Release:	1
