@@ -8,7 +8,7 @@ Version:	1.2.3
 Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
-Source0:	http://dl.sourceforge.net/%{_name}/%{_name}-4-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/rosegarden/%{_name}-4-%{version}.tar.bz2
 # Source0-md5:	e7fb7ebcb21ac6841ac5cfd6683f5fb2
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-install.patch
