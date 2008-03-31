@@ -1,3 +1,8 @@
+# TODO:
+#	installed but unpackaged
+#	   /usr/share/apps/profiles/rosegarden.profile.xml
+#	   /usr/share/locale/en/LC_MESSAGES/rosegarden.mo
+#	rename spec to rosegarden
 #
 %define		_name		rosegarden
 #
@@ -16,10 +21,13 @@ URL:		http://www.rosegardenmusic.com/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	cmake
 BuildRequires:	dssi >= 0.4
+BuildRequires:	fftw3-single-devel
+BuildRequires:	gettext-devel
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 BuildRequires:	kdelibs-devel >= 3.1
 BuildRequires:	ladspa-devel
 BuildRequires:	liblrdf-devel
+BuildRequires:	lirc-devel
 BuildRequires:	pkgconfig >= 0.15
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -39,19 +47,17 @@ nutowego, a jego głównym zadaniem jest komponowanie i edycja muzyki.
 #patch1 -p1
 
 %build
-%cmake .
+%cmake . \
+	-DWANT_LIRC=YES
 %{__make}
 	
 %install
 rm -rf $RPM_BUILD_ROOT
 
-scons install \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
-
-mv $RPM_BUILD_ROOT%{_datadir}/applnk/Applications/rosegarden.desktop \
-	$RPM_BUILD_ROOT%{_desktopdir}/kde
 
 rm -rf $RPM_BUILD_ROOT%{_iconsdir}/locolor
 
@@ -66,7 +72,11 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{_name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS README TRANSLATORS
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/rosegarden
+%attr(755,root,root) %{_bindir}/rosegarden-audiofile-importer
+%attr(755,root,root) %{_bindir}/rosegarden-lilypondview
+%attr(755,root,root) %{_bindir}/rosegarden-project-package
+%attr(755,root,root) %{_bindir}/rosegardensequencer
 %{_datadir}/apps/rosegarden
 %{_desktopdir}/kde/rosegarden.desktop
 %{_iconsdir}/[!l]*/*/*/*.png
