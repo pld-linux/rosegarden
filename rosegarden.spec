@@ -4,12 +4,12 @@
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl.UTF-8):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden4
-Version:	1.2.3
-Release:	1
+Version:	1.6.1
+Release:	0.1
 License:	GPL
 Group:		X11/Applications/Sound
-Source0:	http://dl.sourceforge.net/rosegarden/%{_name}-4-%{version}.tar.bz2
-# Source0-md5:	e7fb7ebcb21ac6841ac5cfd6683f5fb2
+Source0:	http://dl.sourceforge.net/rosegarden/%{_name}-%{version}.tar.bz2
+# Source0-md5:	60efd0d0afcb3632d8188ef25082bcf9
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-install.patch
 URL:		http://www.rosegardenmusic.com/
@@ -34,7 +34,7 @@ Rosegarden jest interaktywnym sekwencerem MIDI i audio, edytorem zapisu
 nutowego, a jego głównym zadaniem jest komponowanie i edycja muzyki.
 
 %prep
-%setup -q -n %{_name}-4-%{version}
+%setup -q -n %{_name}-%{version}
 %patch0 -p1
 %patch1 -p1
 
