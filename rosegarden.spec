@@ -14,6 +14,7 @@ Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-install.patch
 URL:		http://www.rosegardenmusic.com/
 BuildRequires:	alsa-lib-devel
+BuildRequires:	cmake
 BuildRequires:	dssi >= 0.4
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 BuildRequires:	kdelibs-devel >= 3.1
@@ -21,7 +22,6 @@ BuildRequires:	ladspa-devel
 BuildRequires:	liblrdf-devel
 BuildRequires:	pkgconfig >= 0.15
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	scons
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,13 +36,11 @@ nutowego, a jego głównym zadaniem jest komponowanie i edycja muzyki.
 %prep
 %setup -q -n %{_name}-%{version}
 %patch0 -p1
-%patch1 -p1
+#patch1 -p1
 
 %build
-export CXXFLAGS="%{rpmcflags}"
-scons configure \
-	qtincludes=%{_includedir}/qt
-scons
+%cmake .
+%{__make}
 	
 %install
 rm -rf $RPM_BUILD_ROOT
