@@ -33,7 +33,7 @@ BuildRequires:	liblrdf-devel
 BuildRequires:	lirc-devel
 BuildRequires:	pkgconfig >= 0.15
 BuildRequires:	rpmbuild(macros) >= 1.129
-Suggests:	kdebase-kdialog
+Suggests:	kde4-kdebase-kdialog
 Suggests:	libsndfile-progs
 Suggests:	lilypond
 Suggests:	perl-XML-Twig
