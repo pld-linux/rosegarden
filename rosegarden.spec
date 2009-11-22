@@ -36,6 +36,7 @@ BuildRequires:	rpmbuild(macros) >= 1.129
 Suggests:	kdebase-kdialog
 Suggests:	libsndfile-progs
 Suggests:	lilypond
+Suggests:	perl-XML-Twig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	_smp_mflags %{nil}
