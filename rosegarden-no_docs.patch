@@ -1,0 +1,12 @@
+--- rosegarden-1.7.3/CMakeLists.txt.orig	2009-02-08 05:20:17.000000000 +0100
++++ rosegarden-1.7.3/CMakeLists.txt	2009-11-22 10:24:38.000000000 +0100
+@@ -340,9 +340,6 @@
+ # Build and install the translations directory
+ ADD_SUBDIRECTORY(po RGbuild/po)
+ 
+-# Build and install the documentation directory
+-ADD_SUBDIRECTORY(docs RGbuild/docs)
+-
+ # Install data files
+ ADD_SUBDIRECTORY(data RGbuild/data)
+ 

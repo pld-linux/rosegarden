@@ -1,0 +1,62 @@
+--- rosegarden-1.7.3/src/CMakeLists.txt.orig	2009-11-22 09:37:52.000000000 +0100
++++ rosegarden-1.7.3/src/CMakeLists.txt	2009-11-22 09:38:31.000000000 +0100
+@@ -76,6 +76,7 @@
+ ENDIF(USE_PCH)
+ 
+ TARGET_LINK_LIBRARIES(rosegardensequencer 
++    RosegardenCommon
+     ${QT_AND_KDECORE_LIBS} 
+     ${ALSA_LIBS} 
+     ${JACK_LIBS}
+@@ -83,7 +84,6 @@
+     ${LRDF_LIBS}
+     ${FFTW3F_LIBS}
+     kdeui
+-    RosegardenCommon
+ )
+ 
+ # gui executable
+@@ -137,6 +137,10 @@
+ ENDIF(USE_PCH)
+ 
+ TARGET_LINK_LIBRARIES(rosegarden
++    RosegardenExtended
++    RosegardenSegmentCanvas
++    RosegardenCommands
++    RosegardenCommon
+     ${QT_AND_KDECORE_LIBS} 
+     ${LIBLO_LIBS}
+     ${LRDF_LIBS}
+@@ -147,10 +151,6 @@
+     kio
+     kdeui
+     kdeprint
+-    RosegardenExtended
+-    RosegardenSegmentCanvas
+-    RosegardenCommands
+-    RosegardenCommon
+ )
+ 
+ # Install targets
+@@ -185,6 +185,10 @@
+     )
+ 
+     TARGET_LINK_LIBRARIES(RosegardenTestDriver
++        RosegardenExtended
++        RosegardenSegmentCanvas
++        RosegardenCommands
++        RosegardenCommon
+         ${QT_AND_KDECORE_LIBS} 
+         ${LIBLO_LIBS}
+         ${LRDF_LIBS}
+@@ -195,10 +199,6 @@
+         kio
+         kdeui
+         kdeprint
+-        RosegardenExtended
+-        RosegardenSegmentCanvas
+-        RosegardenCommands
+-        RosegardenCommon
+     )
+     FOREACH(currenttest ${tests_SRCS})
+         GET_FILENAME_COMPONENT(TestName ${currenttest} NAME_WE)
