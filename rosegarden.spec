@@ -2,14 +2,13 @@
 #	- installed but unpackaged
 #	   /usr/share/apps/profiles/rosegarden.profile.xml
 #	   /usr/share/locale/en/LC_MESSAGES/rosegarden.mo
-#	- rename spec to rosegarden
 #       - fix documentation building
 #
 %define		_name		rosegarden
 #
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl.UTF-8):	Rosegarden - interaktywny sekwencer MIDI i audio
-Name:		rosegarden4
+Name:		rosegarden
 Version:	1.7.3
 Release:	1
 License:	GPL
@@ -37,6 +36,7 @@ Suggests:	kde4-kdebase-kdialog
 Suggests:	libsndfile-progs
 Suggests:	lilypond
 Suggests:	perl-XML-Twig
+Obsoletes:	rosegarden4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	_smp_mflags %{nil}
