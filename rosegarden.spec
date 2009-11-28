@@ -2,7 +2,6 @@
 #	- installed but unpackaged
 #	   /usr/share/apps/profiles/rosegarden.profile.xml
 #	   /usr/share/locale/en/LC_MESSAGES/rosegarden.mo
-#       - fix documentation building
 #
 %define		_name		rosegarden
 #
@@ -10,14 +9,13 @@ Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl.UTF-8):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden
 Version:	1.7.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/rosegarden/%{_name}-%{version}.tar.bz2
 # Source0-md5:	122eab42e375d2f3b009c8540ae8069c
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-link_order.patch
-Patch2:		%{name}-no_docs.patch
 URL:		http://www.rosegardenmusic.com/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	cmake
@@ -25,7 +23,7 @@ BuildRequires:	dssi >= 0.4
 BuildRequires:	fftw3-single-devel
 BuildRequires:	gettext-devel
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
-BuildRequires:	kde4-kde3support-devel
+BuildRequires:	kde4-kde3support-devel >= 3.5.10-15
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	ladspa-devel
 BuildRequires:	liblrdf-devel
@@ -54,7 +52,6 @@ nutowego, a jego głównym zadaniem jest komponowanie i edycja muzyki.
 %setup -q -n %{_name}-%{version}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 export CMAKE_LIBRARY_PATH=/usr/lib/kde3dev
