@@ -26,6 +26,7 @@ BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 BuildRequires:	kde4-kde3support-devel >= 3.5.10-15
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	ladspa-devel
+BuildRequires:	liblo-devel
 BuildRequires:	liblrdf-devel
 BuildRequires:	lirc-devel
 BuildRequires:	pkgconfig >= 0.15
@@ -54,12 +55,12 @@ nutowego, a jego głównym zadaniem jest komponowanie i edycja muzyki.
 %patch1 -p1
 
 %build
-export CMAKE_LIBRARY_PATH=/usr/lib/kde3dev
-export CMAKE_INCLUDE_PATH=/usr/include/kde3
+export CMAKE_LIBRARY_PATH=%{_prefix}/lib/kde3dev
+export CMAKE_INCLUDE_PATH=%{_includedir}/kde3
 %cmake . \
 	-DWANT_LIRC=YES
 %{__make}
-	
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
