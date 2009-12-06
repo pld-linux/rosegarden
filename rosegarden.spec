@@ -19,7 +19,7 @@ Patch1:		%{name}-link_order.patch
 URL:		http://www.rosegardenmusic.com/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	cmake
-BuildRequires:	dssi >= 0.4
+BuildRequires:	dssi-devel
 BuildRequires:	fftw3-single-devel
 BuildRequires:	gettext-devel
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
