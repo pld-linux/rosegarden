@@ -9,7 +9,7 @@ Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl.UTF-8):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden
 Version:	1.7.3
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/rosegarden/%{_name}-%{version}.tar.bz2
@@ -19,7 +19,7 @@ Patch1:		%{name}-link_order.patch
 URL:		http://www.rosegardenmusic.com/
 BuildRequires:	alsa-lib-devel
 BuildRequires:	cmake
-BuildRequires:	dssi-devel
+BuildRequires:	dssi-devel >= 1.0.0
 BuildRequires:	fftw3-single-devel
 BuildRequires:	gettext-devel
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
