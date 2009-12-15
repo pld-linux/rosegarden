@@ -1,0 +1,12 @@
+diff -dur rosegarden-1.7.3.orig/src/sound/DSSIPluginFactory.cpp rosegarden-1.7.3/src/sound/DSSIPluginFactory.cpp
+--- rosegarden-1.7.3.orig/src/sound/DSSIPluginFactory.cpp	2009-02-08 05:20:13.000000000 +0100
++++ rosegarden-1.7.3/src/sound/DSSIPluginFactory.cpp	2009-12-15 09:57:52.000000000 +0100
+@@ -238,7 +238,7 @@
+         path = cpath;
+ 
+     if (path == "") {
+-        path = "/usr/local/lib/dssi:/usr/lib/dssi";
++        path = "/usr/local/lib64/dssi:/usr/lib64/dssi";
+         char *home = getenv("HOME");
+         if (home)
+             path = std::string(home) + "/.dssi:" + path;
