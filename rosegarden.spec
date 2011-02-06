@@ -39,8 +39,6 @@ Suggests:	perl-XML-Twig
 Obsoletes:	rosegarden4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define	_smp_mflags %{nil}
-
 %description
 Rosegarden is an attractive, user-friendly audio and MIDI sequencer,
 score editor, and general-purpose music composition and editing
@@ -63,12 +61,12 @@ export CMAKE_LIBRARY_PATH=%{_prefix}/lib/kde3dev
 export CMAKE_INCLUDE_PATH=%{_includedir}/kde3
 %cmake . \
 	-DWANT_LIRC=YES
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_desktopdir}/kde
