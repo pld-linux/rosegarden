@@ -1,17 +1,18 @@
---- rosegarden-1.6.1/data/desktop/rosegarden.desktop.orig	2008-03-31 03:52:27.489681034 +0200
-+++ rosegarden-1.6.1/data/desktop/rosegarden.desktop	2008-03-31 03:55:50.975695904 +0200
-@@ -1,13 +1,14 @@
+--- rosegarden-11.11.11/data/desktop/rosegarden.desktop.orig	2011-11-12 00:38:12.000000000 +0100
++++ rosegarden-11.11.11/data/desktop/rosegarden.desktop	2011-11-24 17:50:29.000000000 +0100
+@@ -1,7 +1,7 @@
  [Desktop Entry]
  Encoding=UTF-8
  Type=Application
 -Categories=AudioVideo;Audio;Midi;Sequencer;X-SuSE-Sequencer;X-Red-Hat-Base;
 +Categories=Qt;KDE;AudioVideo;Audio;Midi;Sequencer;
- Exec=rosegarden -caption "%c" %i %m
- MimeType=audio/x-rosegarden;audio/x-rosegarden-device
- X-KDE-NativeMimeType=audio/x-rosegarden
- Icon=rosegarden.png
- DocPath=rosegarden/index.html
- Comment=MIDI and Audio Sequencer and Editor
+ Exec=rosegarden %f
+ MimeType=audio/x-rosegarden-composition;audio/x-rosegarden-device;audio/x-rosegarden-project;audio/x-rosegarden-template;audio/x-wav;audio/midi;audio/ogg;audio/mp3;audio/x-flac;
+ X-KDE-NativeMimeType=audio/x-rosegarden-composition
+@@ -9,6 +9,7 @@
+ Comment=MIDI and Audio Sequencer and Notation Editor
+ Comment[es]=Secuenciador de MIDI y de audio y editor de partitura
+ Comment[ru]=MIDI-секвенсер и нотный редактор
 +Comment[pl]=Sekwencer i edytor MIDI i dźwięku
  Terminal=false
  Name=Rosegarden
