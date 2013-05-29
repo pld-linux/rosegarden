@@ -1,4 +1,3 @@
-#
 %define		_name		rosegarden
 #
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
