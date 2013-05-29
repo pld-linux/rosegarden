@@ -4,14 +4,13 @@
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl.UTF-8):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden
-Version:	11.11.11
+Version:	13.04
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/rosegarden/%{_name}-%{version}.tar.bz2
-# Source0-md5:	1e6529625b1e793288c3f1f8cdec955a
+# Source0-md5:	bcc9be7bf8c3945e0eefdb95dc037f0b
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-dssi_lib64.patch
 URL:		http://www.rosegardenmusic.com/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
@@ -32,6 +31,7 @@ BuildRequires:	pkgconfig >= 0.15
 BuildRequires:	qt4-build
 BuildRequires:	qt4-linguist
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	xorg-util-makedepend
 Requires(post,postun):	shared-mime-info
 Suggests:	libsndfile-progs
 Suggests:	lilypond
@@ -51,9 +51,6 @@ nutowego, a jego głównym zadaniem jest komponowanie i edycja muzyki.
 %prep
 %setup -q -n %{_name}-%{version}
 %patch0 -p1
-%if "%{_lib}" == "lib64"
-%patch1 -p1
-%endif
 
 %build
 
