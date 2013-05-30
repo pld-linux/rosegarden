@@ -5,7 +5,7 @@ Version:	13.04
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Sound
-Source0:	http://dl.sourceforge.net/rosegarden/%{name}-%{version}.tar.bz2
+Source0:	http://downloads.sourceforge.net/rosegarden/%{name}-%{version}.tar.bz2
 # Source0-md5:	bcc9be7bf8c3945e0eefdb95dc037f0b
 Patch0:		%{name}-desktop.patch
 URL:		http://www.rosegardenmusic.com/
