@@ -17,7 +17,7 @@ BuildRequires:	alsa-lib-devel
 BuildRequires:	cmake
 BuildRequires:	dssi-devel >= 1.0.0
 BuildRequires:	fftw3-single-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	jack-audio-connection-kit-devel >= 0.80.0
 BuildRequires:	ladspa-devel
 BuildRequires:	liblo-devel
