@@ -1,19 +1,34 @@
+#
+# Conditional build:
+%bcond_with	qt4	# Qt 4 instead of Qt 5
+#
 Summary:	Rosegarden - an attractive audio and MIDI sequencer
 Summary(pl.UTF-8):	Rosegarden - interaktywny sekwencer MIDI i audio
 Name:		rosegarden
-Version:	15.10
-Release:	2
+Version:	16.06
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Sound
 Source0:	http://downloads.sourceforge.net/rosegarden/%{name}-%{version}.tar.bz2
-# Source0-md5:	6423f90ae392ff3673578ddc10020efd
+# Source0-md5:	a8679dcd852a78eee064d8a4a4f4a961
 Patch0:		%{name}-desktop.patch
 URL:		http://www.rosegardenmusic.com/
-BuildRequires:	QtCore-devel
-BuildRequires:	QtGui-devel
-BuildRequires:	QtNetwork-devel
-BuildRequires:	QtXml-devel
+%if %{with qt4}
+BuildRequires:	QtCore-devel >= 4.8.0
+BuildRequires:	QtGui-devel >= 4.8.0
+BuildRequires:	QtNetwork-devel >= 4.8.0
+BuildRequires:	QtTest-devel >= 4.8.0
+BuildRequires:	QtXml-devel >= 4.8.0
+%else
+BuildRequires:	Qt5Core-devel >= 5.1.0
+BuildRequires:	Qt5Network-devel >= 5.1.0
+BuildRequires:	Qt5PrintSupport-devel >= 5.1.0
+BuildRequires:	Qt5Test-devel >= 5.1.0
+BuildRequires:	Qt5Xml-devel >= 5.1.0
+BuildRequires:	Qt5Widgets-devel >= 5.1.0
+%endif
 BuildRequires:	alsa-lib-devel >= 0.9.0
+BuildRequires:	cmake >= 2.8.12
 BuildRequires:	dssi-devel >= 1.0.0
 BuildRequires:	fftw3-single-devel >= 3.0.0
 BuildRequires:	gettext-tools
@@ -23,15 +38,38 @@ BuildRequires:	liblo-devel >= 0.7
 BuildRequires:	liblrdf-devel >= 0.2
 BuildRequires:	libsamplerate-devel >= 0.1.2
 BuildRequires:	libsndfile-devel >= 1.0.16
+BuildRequires:	libstdc++-devel
 BuildRequires:	lirc-devel
-BuildRequires:	pkgconfig >= 0.15
-BuildRequires:	qt4-build
-BuildRequires:	qt4-linguist
+BuildRequires:	pkgconfig >= 1:0.15
+%if %{with qt4}
+BuildRequires:	qt4-build >= 4.8.0
+BuildRequires:	qt4-linguist >= 4.8.0
+%else
+BuildRequires:	qt5-build >= 5.1.0
+BuildRequires:	qt5-linguist >= 5.1.0
+%endif
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-util-makedepend
-BuildRequires:	zlib
+BuildRequires:	zlib-devel
 Requires(post,postun):	shared-mime-info
-Suggests:	libsndfile-progs
+%if %{with qt4}
+Requires:	QtCore >= 4.8.0
+Requires:	QtGui >= 4.8.0
+Requires:	QtNetwork >= 4.8.0
+Requires:	QtXml >= 4.8.0
+%else
+Requires:	Qt5Core >= 5.1.0
+Requires:	Qt5Network >= 5.1.0
+Requires:	Qt5PrintSupport >= 5.1.0
+Requires:	Qt5Xml >= 5.1.0
+Requires:	Qt5Widgets >= 5.1.0
+%endif
+Requires:	liblo >= 0.7
+Requires:	liblrdf >= 0.2
+Requires:	libsamplerate >= 0.1.2
+Requires:	libsndfile >= 1.0.16
+Suggests:	libsndfile-progs >= 1.0.16
 Suggests:	lilypond
 Suggests:	perl-XML-Twig
 Obsoletes:	rosegarden4
@@ -52,19 +90,17 @@ muzyki.
 %patch0 -p1
 
 %build
-
-%configure \
-	--with-qtlibdir=%{_libdir}
+install -d build
+cd build
+%cmake ..
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-rm -rf $RPM_BUILD_ROOT%{_iconsdir}/locolor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -80,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS README
 %attr(755,root,root) %{_bindir}/rosegarden
 %{_desktopdir}/rosegarden.desktop
-%{_iconsdir}/[!l]*/*/*/*.png
-%{_datadir}/mime/packages/*.xml
+%{_iconsdir}/hicolor/*x*/apps/rosegarden.png
+%{_iconsdir}/hicolor/*x*/mimetypes/application-x-rosegarden-*.png
 %{_datadir}/appdata/rosegarden.appdata.xml
+%{_datadir}/mime/packages/rosegarden.xml
